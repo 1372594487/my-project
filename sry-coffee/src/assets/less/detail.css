@@ -1,0 +1,102 @@
+.detail {
+  padding-bottom: 50px;
+  padding-top: 46px;
+}
+.detail /deep/ .van-nav-bar .van-icon {
+  color: rgba(0, 0, 255, 0.5);
+}
+.detail /deep/ .van-nav-bar__text {
+  color: rgba(0, 0, 255, 0.5);
+}
+.detail .pro-info-box {
+  padding: 0 10px;
+}
+.detail .pro-info {
+  padding: 20px;
+  position: relative;
+  top: -20px;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.detail .pro-box {
+  margin-bottom: 20px;
+}
+.detail .pro-name {
+  font-weight: bold;
+}
+.detail .pro-enname {
+  font-size: 10px;
+  color: #999;
+  margin-top: 5px;
+}
+.detail .pro-price {
+  color: rgba(0, 0, 255, 0.5);
+  font-weight: bold;
+}
+.detail .rule-title {
+  width: 60px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 14px;
+}
+.detail .r-item {
+  width: 60px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  background-color: #e8e8e8;
+  font-size: 12px;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+.detail .r-item.active {
+  background-color: rgba(0, 0, 255, 0.3);
+  color: #fff;
+}
+.detail .rule-items {
+  margin-bottom: 10px;
+}
+.detail .rule-items .r-item:last-child {
+  margin-right: 0;
+}
+.detail .large-text {
+  font-size: 10px;
+}
+.detail .rule-box {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.detail .desc-box {
+  margin-top: 20px;
+}
+.detail .pro-desc {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.detail .desc-text {
+  color: #999;
+  font-size: 12px;
+}
+.detail .text-item {
+  margin-bottom: 10px;
+}
+.detail /deep/ .van-stepper--round .van-stepper__minus {
+  color: rgba(0, 0, 255, 0.5);
+  border-color: rgba(0, 0, 255, 0.5);
+}
+.detail /deep/ .van-stepper--round .van-stepper__plus {
+  background-color: rgba(0, 0, 255, 0.3);
+}
+.detail /deep/ .van-info {
+  background-color: rgba(0, 0, 255, 0.3);
+}
+.detail .c-box {
+  border-bottom: 1px solid #e8e8e8;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.detail .select-count {
+  font-size: 14px;
+  line-height: 22px;
+}
