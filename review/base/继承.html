@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 概念
+        // .0 构造函数  对象A 
+        function A() {
+            this.width = "100px";
+        }
+
+        // .0 创建A对象的实例
+        var a1 = new A();
+        console.log(a1); // 实例对象
+        console.log("对象A的实例", a1.width);
+        console.log("对象A的实例", a1.height);
+
+
+        // .0 构造函数  对象B 
+        function B() {
+            this.height = "99px";
+        }
+        // .0 利用原型的方式实现继承
+        B.prototype = new A();
+        // .0 创建对象B的实例
+        var b1 = new B();
+        console.log(b1); // 实例对象
+        console.log("对象B的实例", b1.width); // 100px
+        console.log("对象B的实例", b1.height); // 100px
+        // 父对象（A）被子对象（B）所继承。
+        // 你的就是我的,我的还是我的.
+        // 子对象（B）可以使用父对象（A）的属性和方法。
+
+
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.say = function () {
+            console.log('hello, my name is ' + this.name);
+        };
+
+        function Man() {}
+        Man.prototype = new Person("pursue");
+        var man1 = new Man();
+        man1.say(); //hello, my name is pursue
+        var man2 = new Man();
+        console.log(man1.say === man2.say); //true
+        console.log(man1.name === man2.name); //true
+
+        console.log("man1.name => " + man1.name, "man2.name => " + man2.name);
+        man1.name = "change";
+        console.log("man1.name => " + man1.name, "man2.name => " + man2.name);
+
+
+        //**缺点：**实例化两个类，修改第一个实例的属性，会牵动第二个实例的属性变化。原因是两个实例的原型对象引用的是同一个对象，
+        // 都是父类的实例对象。而改变的方法在父类的实例对象上，而且是引用类型。
+
+
+        function Parent2() {
+            this.name = 'parent2';
+            this.play = [1, 2, 3];
+        }
+
+        function Child2() {
+            this.type = 'child2';
+        }
+        Child2.prototype = new Parent2();
+
+        var s1 = new Child2();
+        var s2 = new Child2();
+        console.log(s1.play, s2.play);
+        s1.play.push(4);
+        console.log(s1.play, s2.play);
+        console.log(s1.name, s2.name);
+        s1.name = "ch";
+        console.log(s1.name, s2.name);
+
+        //---------------------------------------------------------------------------------------------
+        // 1.0 父对象  A
+        function A(width) {
+            this.width = width;
+        }
+        // .原型
+        A.prototype.foo = function () {
+            console.log(this.width);
+        }
+        // .0 创建A对象的实例
+        var a1 = new A("99px");
+        console.log(a1);
+
+        // 2.0 子对象 B
+        function B(w) {
+            // .0 call 这个方法改变了B对象的this指向 （替换）
+            // B 替换了 A 对象
+            // A.call(this,w);
+            //
+
+            // .0 apply 这个方法改变了B对象的this指向 （替换）
+            // B 替换了 A 对象
+
+            //bind 
+            A.apply(this, [w]);
+
+            //call 、bind 、 apply 这三个函数的第一个参数都是 this 的指向对象，第二个参数差别就来了：
+
+            // call 的参数是直接放进去的， 第二第三第 n 个参数全都用逗号分隔， 直接放到后面 obj.myFun.call(db, '成都', ..., 'string')。
+
+            // apply 的所有参数都必须放在一个数组里面传进去 obj.myFun.apply(db, ['成都', ..., 'string'])。
+
+            // bind 除了返回是函数以外， 它 的参数和 call 一样。
+
+            // 当然， 三者的参数不限定是 string 类型， 允许是各种类型， 包括函数、 object 等等！
+        }
+
+        // 3.0 创建子对象的实例
+        var b1 = new B("200px");
+        // // .0 子对象的实例
+        // console.log(b1);
+        // .0 引用父对象的属性
+        console.log(b1.width);
+        // .0 如果没有复制原型的成员，会报错的
+        // b1.foo();
+        for (var key in A.prototype) {
+            B.prototype[key] = A.prototype[key];
+        }
+        // .0 子对象的实例
+        console.log(b1);
+        b1.foo();
+
+        // 总结：
+        // 子对象继承父对象的成员，是通过call这个方法实现的,传递参数：单一的值。
+        // 子对象继承父对象的成员，是通过apply这个方法实现的,传递参数：数组
+        // 这两个方法的作用是一样：都是可以改变this指向
+        // 不同的传递参数的方式不同，一个数单一的值，一个数组存放值。
+        // 如果是使用call和apply方法实现成员的继承，注意this指向
+        // 继承的构造函数的成员，非原型上的成员
+        // 如果想继承父对象和父对象的原型相关成员，那么需要复制原型对象。
+    </script>
+</body>
+
+</html>
