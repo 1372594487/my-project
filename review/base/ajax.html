@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+</head>
+
+<body>
+    <script>
+        // Ajax:
+        // 是指一种创建交互式，快速动态网页应用的网页开发技术，无需重新加载整个网页的情况下，能够更新部分网页的技术
+        //可以读取本地或远程文档的内容
+        // 通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
+        // 首要的条件：http服务环境
+        // 然后，同源策略（协议，域名[IP]，端口需要一致）
+        // 是因为ajax， 使用的是XMLHttpRequest这个异步对象
+        // XMLHttpRequest这个异步对象 这个对象不支持跨域访问数据
+
+        //进行数据前后端交互，需要阅读借口说明文档
+        //1接口地址
+        //2请求数据方式
+        //3是否提交参数
+        //4是否跨域
+        //5响应的数据
+
+        $.ajax({
+            url:"",//
+            type:"",//
+            async:"",//是否异步 默认 true
+            data:{},//是否提交参数
+            dataType:"",//是否跨域
+            beforeSend:"",//
+            afterSend:"",
+            
+        })
+    </script>
+</body>
+
+</html>

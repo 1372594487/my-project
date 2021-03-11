@@ -1,0 +1,55 @@
+@mixin p0_m0 {
+    padding: 0;
+    margin: 0;
+}
+@mixin line ($color:block) {
+    border: $color solid 1px;
+}
+@mixin line-hide($color:transparent) {
+    border-bottom: $color 2px solid;
+}
+@mixin line-show($color:red) {
+    border-bottom: $color 2px solid;
+}
+@mixin minwith {
+    min-width: 40px;
+}
+
+body {
+
+    @include p0_m0();
+    height: 2000px;
+    padding-top: 100px;
+
+    ul {
+        @include p0_m0();
+        display: flex;
+        justify-content: center;
+        
+        font-size: 30px;
+        padding: 10px;
+
+
+        li {
+            list-style: none;
+            @include minwith();
+            text-align: center;
+            margin: 10px;
+            a{   
+                display: block;
+                text-decoration:none;
+                color: black;
+                @include line-hide();
+                &:hover{
+                    // background-color: rgba(0,0,0,0.3);
+                    @include line-show();
+                }
+                
+            }
+            .active{
+                @include line-show();
+            }
+
+        }
+    }
+}

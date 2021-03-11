@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>每日一道： 去重复空格</title>
+</head>
+
+<body>
+    <p>输入为包含空格的字符串</p>
+    <p>输出描述:</p>
+    <p>输出为压缩重复空格并倒序输出的字符串</p>
+    <p>示例1 输入输出示例仅供调试 ，后台判题数据 般不包含示例</p>
+    <p>输入</p>
+    <p style="white-space:pre-wrap">abc def ghi</p>
+    <p>输出</p>
+    <p>cba fed ihg</p>
+
+
+
+
+
+
+
+    <script>
+        // var s = "abc     def   ghi";
+        // var reverseWords = function (s) {
+        //     let s1 = s.split(' ').reverse();
+        //     let s2 = [];
+        //     for (let i = 0; i < s1.length; i++) {
+        //         if (s1[i].length > 0) {
+        //             s2.push(s1[i]);
+        //         }
+        //     }
+        //     return s2.join(' ');
+        // };
+        // var res = reverseWords(s);
+        // console.log(res);
+
+        var s = "abc     def   ghi";
+        var reverseWords = function (s) {
+            let s1 = s.split(' ');
+            let s2 = [];
+            var arrTemp = [];
+            for (let a = 0; a < s1.length; a++) {
+                if (s1[a].length > 1) {
+                    s1[a] = s1[a].split('').reverse().join("");
+                    arrTemp.push(s1[a]);
+                    s2 = arrTemp.join(" ")
+                }
+            }
+            return s2;
+        };
+        var res = reverseWords(s);
+        console.log(res);
+    </script>
+</body>
+
+</html>

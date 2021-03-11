@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../tool/jquery/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <script>
+        
+
+
+
+        //1.全局作用域
+        // (1) 全局作用域在页面打开时被创建,页面关闭时被销毁
+        // (2) 编写在script标签中的变量和函数,作用域为全局，在页面的任意位置都可以访问到
+        // (3) 在全局作用域中有全局对象window,代表一个浏览器窗口,由浏览器创建,可以直接调用
+        // (4) 全局作用域中声明的变量和函数会作为window对象的属性和方法保存
+
+        //作用域链
+        // JavaScript中的函数运行在他们被定义的作用域里，而不是他们被执行的作用域里。
+        // 调用函数时,函数作用域被创建,函数执行完毕,函数作用域被销毁
+        //在函数作用域中可以访问到全局作用域的变量,在函数外无法访问到函数作用域内的变量
+        // JS中当遇到对变量名或者函数名的使用时，会首先在当前作用域查找变量或者函数,如果没有找到，就会到其上层作用域中寻找，并以此类推。
+        //在函数作用域中,不使用变量关键字声明的变量,在赋值时会往上一级作用域寻找已经声明的同名变量,直到全局作用域时还没找到,则会成为window的属性
+        //
+        var a = 3;
+
+        function fun1() {
+            var a = 2;
+
+            function run() {
+                alert(a); //2
+            }
+            run();
+        }
+        fun1();
+        //面试题1
+        var num = 10;
+        fun2();
+
+        function fun2() {
+            console.log(num); //undefined 函数作用域中变量名提升
+            var num = 20;
+        }
+        //面试题2
+        var a = 18;
+        f2();
+
+        function f2() {
+            var b = 9;
+            console.log(a); //underfined
+            console.log(b); //9;
+            var a = '123';
+        }
+        //面试题3
+        f3();
+        console.log(c); //9
+        console.log(b); //9
+        console.log(a); //error a is not defined
+
+        function f3() {
+            var a = b = c = 9;
+            //var a =9
+            //   b = 9;
+            //    c = 9;
+            console.log(a); //9
+            console.log(b); //9
+            console.log(c); //9
+        }
+    </script>
+</body>
+
+</html>
